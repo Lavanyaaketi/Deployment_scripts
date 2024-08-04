@@ -10,7 +10,7 @@ aws ec2 run-instances \
     --instance-type t2.micro \
     --key-name Jenkins2-Key-Pair \
     --user-data .\InstallApache.sh
-    //--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
+    #--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
 
 # create target group
 aws elbv2 create-target-group \
