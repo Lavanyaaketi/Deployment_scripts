@@ -2,7 +2,16 @@
 
 
 export AWS_DEFAULT_REGION=us-east-2
-: '
+
+# create EC2 instance
+aws ec2 run-instances \
+    --image-id ami-01e39fec38ed82bc1 \
+    --count 1 \
+    --instance-type t2.micro \
+    --key-name MyKeyPair \
+    --user-data file:C:\Users\USER\OneDrive\Desktop\AWS\Shell_Scripts\InstallApache.sh \
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
+
 # create target group
 aws elbv2 create-target-group \
     --name my-targets \
@@ -27,8 +36,5 @@ aws elbv2 create-target-group \
     aws elbv2 create-listener --load-balancer-arn arn:aws:elasticloadbalancing:us-east-2:590183815392:loadbalancer/app/my-load-balancer/2a136064ae62ffb7 \
 --protocol HTTP --port 80  \
 --default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:us-east-2:590183815392:targetgroup/my-targets/c1d2b1b0754f535c
- '
-    # verify health of registered TG
-    aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:us-east-2:590183815392:targetgroup/my-targets/c1d2b1b0754f535c
+ 
     
-
