@@ -8,8 +8,8 @@ aws ec2 run-instances \
     --image-id ami-01e39fec38ed82bc1 \
     --count 1 \
     --instance-type t2.micro \
-    --key-name MyKeyPair \
-    --user-data file:C:\Users\USER\OneDrive\Desktop\AWS\Shell_Scripts\InstallApache.sh \
+    --key-name Jenkins2-Key-Pair \
+    --user-data .\InstallApache.sh
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
 
 # create target group
