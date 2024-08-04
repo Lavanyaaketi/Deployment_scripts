@@ -2,7 +2,8 @@
 
 
 export AWS_DEFAULT_REGION=us-east-2
-USER_DATA_SCRIPT_PATH="./InstallApache.sh"
+echo "pwd"
+USER_DATA_SCRIPT_PATH="/var/lib/jenkins/workspace/cd/Deployment_scripts/InstallApache.sh"
 USER_DATA_BASE64=$(base64 -w 0 "$USER_DATA_SCRIPT_PATH")
 # create EC2 instance
 aws ec2 run-instances \
