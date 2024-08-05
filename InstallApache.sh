@@ -1,4 +1,4 @@
-cat <<EOF > install-apache.sh
+
 #!/bin/bash
 DEPLOYMENT_VERSION="default-value"
 yum update -y
@@ -11,4 +11,4 @@ systemctl start httpd
 echo "started Succesfully"
 systemctl enable httpd
 echo "Deployed Succesfully"
-EOF
+

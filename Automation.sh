@@ -4,13 +4,15 @@
 export AWS_DEFAULT_REGION=us-east-2
 USER_DATA_SCRIPT_PATH="/var/lib/jenkins/workspace/cd/Deployment_scripts/InstallApache.sh"
 USER_DATA_BASE64=$(base64 -w 0 "$USER_DATA_SCRIPT_PATH")
+
+
 # create EC2 instance
 aws ec2 run-instances \
     --image-id ami-01e39fec38ed82bc1 \
     --count 1 \
     --instance-type t2.micro \
     --key-name Jenkins2-Key-Pair \
-    --user-data "$USER_DATA_BASE64" \
+    --user-data USER_DATA_BASE64 \
     #--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
 
 # create target group
