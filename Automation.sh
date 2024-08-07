@@ -10,7 +10,7 @@ aws ec2 run-instances \
     --count 1 \
     --instance-type t2.micro \
     --key-name Jenkins2-Key-Pair \
-    C:/Users/USER/OneDrive/Desktop/AWS/Shell_Scripts/InstallApache.sh
+    source C:/Users/USER/OneDrive/Desktop/AWS/Shell_Scripts/InstallApache.sh
    # --user-data "$USER_DATA_BASE64" \
     #--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
 
