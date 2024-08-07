@@ -2,19 +2,6 @@
 
 
 export AWS_DEFAULT_REGION=us-east-2
-USER_DATA_SCRIPT_PATH="/var/lib/jenkins/workspace/cd/Deployment_scripts/InstallApache.sh"
-USER_DATA_BASE64=$(#!/bin/bash
-DEPLOYMENT_VERSION="default-value"
-yum update -y
-yum install -y httpd
-aws s3 cp s3://simplewebappbucket/my-webapp.war
-echo "Downloaded Succesfully"
-cp ./my-webapp.war /var/www/html/
-echo "Copied Succesfully"
-systemctl start httpd
-echo "started Succesfully"
-systemctl enable httpd
-echo "Deployed Succesfully")
 
 
 # create EC2 instance
@@ -23,7 +10,8 @@ aws ec2 run-instances \
     --count 1 \
     --instance-type t2.micro \
     --key-name Jenkins2-Key-Pair \
-    --user-data "$USER_DATA_BASE64" \
+    source C:\Users\USER\OneDrive\Desktop\AWS\Shell_Scripts\InstallApache.sh
+   # --user-data "$USER_DATA_BASE64" \
     #--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyApacheServer}]'
 
 # create target group
